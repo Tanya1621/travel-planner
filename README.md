@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Travel Planner
 
-## Getting Started
+A Next.js UI for planning trips and sketching a daily itinerary. This is the first slice: client-only, with data in React context and `localStorage`. A database will replace that later.
 
-First, run the development server:
+## What it does
+
+- Create trips (name, destination, dates)
+- Open a trip at `/trips/[tripId]`
+- Add unscheduled activities (title, notes, optional link)
+- Place activities on a day and time block (morning / afternoon / evening) by drag-and-drop or Schedule
+
+Data stays in the browser:
+
+- `travel-planner-trips`
+- `travel-planner-activities`
+
+Clearing site data removes trips and activities.
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requires Node from `.nvmrc` if you use nvm.
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16 (App Router) and React 19
+- Tailwind CSS 4
+- `@dnd-kit/react` for drag and drop
+- TypeScript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/                  routes (`/` and `/trips/[tripId]`)
+  components/trips/     dashboard, cards, create form, trip page
+  components/planner/   activity list, day board, drag-and-drop
+  context/              trips and activities (localStorage)
+  types/                Trip and Activity
+  lib/dates.ts          day lists and date formatting
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`Trip` and `Activity` (`tripId`, nullable `date` / `timeBlock`, `position`) are shaped so they can move to tables later. UI currently reads and writes through context hooks.
