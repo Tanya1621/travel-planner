@@ -2,6 +2,8 @@
 
 import { useDraggable } from "@dnd-kit/react";
 import type { ReactNode } from "react";
+import { GripVertical } from "lucide-react";
+
 
 type DraggableActivityProps = {
   id: string;
@@ -16,18 +18,22 @@ export function DraggableActivity({ id, children }: DraggableActivityProps) {
   return (
     <div
       ref={ref}
-      className={`relative rounded-xl ${isDragging ? "opacity-40" : ""}`}
+      className={isDragging ? "opacity-40" : ""}
     >
-      <button
-        ref={handleRef}
-        type="button"
-        aria-label="Drag activity"
-        className="absolute top-3 right-3 z-10 cursor-grab rounded p-1 text-slate-400 hover:bg-slate-200 active:cursor-grabbing"
-      >
-        ⠿
-      </button>
+      <div className="flex items-start gap-2">
+        <button
+          ref={handleRef}
+          type="button"
+          aria-label="Drag activity"
+          className="mt-0.5 shrink-0 cursor-grab rounded p-1 text-slate-400 hover:bg-slate-100 active:cursor-grabbing"
+        >
+          <GripVertical size={18} />
+        </button>
 
-      {children}
+        <div className="min-w-0 flex-1">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

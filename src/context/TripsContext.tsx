@@ -15,6 +15,7 @@ type TripsContextType = {
   addTrip: (trip: Trip) => void;
   getTripById: (id: string) => Trip | undefined;
   isLoaded: boolean;
+  deleteTrip: (id: string) => void;
 };
 
 const STORAGE_KEY = "travel-planner-trips";
@@ -26,6 +27,7 @@ export function TripsProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load saved trips when the application starts
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     try {
       const savedTrips = localStorage.getItem(STORAGE_KEY);
@@ -59,8 +61,20 @@ export function TripsProvider({ children }: { children: ReactNode }) {
     return trips.find((trip) => trip.id === id);
   }
 
+  function deleteTrip(id: string) {
+    setTrips((previous) =>
+      previous.filter((trip) => trip.id !== id)
+    );
+  }
+
   return (
-    <TripsContext.Provider value={{ trips, addTrip, getTripById, isLoaded }}>
+    <TripsContext.Provider value={{
+      trips,
+      addTrip,
+      getTripById,
+      deleteTrip,
+      isLoaded
+    }}>
       {children}
     </TripsContext.Provider>
   );
