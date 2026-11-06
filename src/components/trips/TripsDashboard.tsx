@@ -5,6 +5,7 @@ import { useTrips } from "@/context/TripsContext";
 import { TripCard } from "./TripCard";
 import { CreateTripForm } from "./CreateTripForm";
 import type { Trip } from "@/types/trip";
+import { ImportTripButton } from "./ImportTripButton";
 
 export function TripsDashboard() {
   const { trips, addTrip, isLoaded } = useTrips();
@@ -25,12 +26,17 @@ export function TripsDashboard() {
             <h1 className="text-4xl font-bold text-slate-900">My Trips</h1>
           </div>
 
-          <button
-            onClick={() => setIsCreating(true)}
-            className="rounded-xl bg-slate-900 px-5 py-3 font-medium text-white hover:bg-slate-700"
-          >
-            + New Trip
-          </button>
+          <div className="flex items-center gap-3">
+            <ImportTripButton />
+
+            <button
+              type="button"
+              onClick={() => setIsCreating(true)}
+              className="rounded-xl bg-slate-900 px-5 py-3 font-medium text-white"
+            >
+              + New Trip
+            </button>
+          </div>
         </header>
 
         {isCreating && (

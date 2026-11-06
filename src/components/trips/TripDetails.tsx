@@ -5,10 +5,14 @@ import { useParams } from "next/navigation";
 import { useTrips } from "@/context/TripsContext";
 import { formatTripDates, getTripDays } from "@/lib/dates";
 import { TripPlanningBoard } from "@/components/planner/TripPlanningBoard";
+import { Download } from "lucide-react";
+import { useActivities } from "@/context/ActivitiesContext";
+import { exportTrip } from "@/lib/exportTrip";
 
 export function TripDetails() {
   const { tripId } = useParams<{ tripId: string }>();
   const { getTripById, isLoaded } = useTrips();
+  const { activities } = useActivities();
 
   if (!isLoaded) {
     return <p className="p-8">Loading trip...</p>;
@@ -41,6 +45,14 @@ export function TripDetails() {
 
         <header className="mb-10">
           <h1 className="text-4xl font-bold text-slate-900">{trip.title}</h1>
+          <button
+            type="button"
+            onClick={() => exportTrip(trip, activities)}
+            className="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            <Download size={16} />
+            Export JSON
+          </button>
 
           <p className="mt-2 text-slate-500">
             {trip.destination} · {formatTripDates(trip.startDate, trip.endDate)}

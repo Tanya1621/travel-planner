@@ -19,6 +19,7 @@ type ActivitiesContextType = {
     undoDelete: () => void;
     lastDeletedActivity: Activity | null;
     deleteActivitiesByTripId: (tripId: string) => void;
+    addActivities: (activities: Activity[]) => void;
 };
 
 const STORAGE_KEY = "travel-planner-activities";
@@ -35,12 +36,13 @@ export function ActivitiesProvider({ children }: { children: ReactNode }) {
     const undoTimerRef =
         useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+
     useEffect(() => {
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
 
             if (saved) {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setActivities(JSON.parse(saved) as Activity[]);
             }
         } catch (error) {
@@ -78,6 +80,13 @@ export function ActivitiesProvider({ children }: { children: ReactNode }) {
                 activity.id === id ? { ...activity, ...updates } : activity,
             ),
         );
+    }
+
+    function addActivities(newActivities: Activity[]) {
+        setActivities((previous) => [
+            ...previous,
+            ...newActivities,
+        ]);
     }
 
 
@@ -149,6 +158,7 @@ export function ActivitiesProvider({ children }: { children: ReactNode }) {
                 undoDelete,
                 lastDeletedActivity,
                 deleteActivitiesByTripId,
+                addActivities,
                 isLoaded
             }}
         >
@@ -166,3 +176,4 @@ export function useActivities() {
 
     return context;
 }
+

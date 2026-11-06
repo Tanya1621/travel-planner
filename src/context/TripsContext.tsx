@@ -27,12 +27,12 @@ export function TripsProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load saved trips when the application starts
-  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     try {
       const savedTrips = localStorage.getItem(STORAGE_KEY);
 
       if (savedTrips) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTrips(JSON.parse(savedTrips) as Trip[]);
       }
     } catch (error) {
