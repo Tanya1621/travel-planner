@@ -45,12 +45,12 @@ export function ActivitiesPanel({
         .sort((a, b) => a.position - b.position);
 
     return (
-        <aside className="rounded-2xl border border-slate-200 bg-white p-5">
+        <aside className="rounded-2xl border border-border bg-surface p-5">
             <DropZone id="unscheduled">
                 <div className="mb-6 flex items-center justify-between">
                     <div>
-                        <h2 className="text-xl font-semibold text-slate-900">Activities</h2>
-                        <p className="mt-1 text-sm text-slate-500">
+                        <h2 className="text-xl font-semibold text-foreground">Activities</h2>
+                        <p className="mt-1 text-sm text-muted">
                             Your unscheduled ideas
                         </p>
                     </div>
@@ -58,7 +58,7 @@ export function ActivitiesPanel({
                     {!isAdding && (
                         <button
                             onClick={() => setIsAdding(true)}
-                            className="rounded-lg bg-slate-900 px-3 py-2 text-sm text-white"
+                            className="rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground"
                         >
                             + Add
                         </button>
@@ -75,9 +75,9 @@ export function ActivitiesPanel({
                 )}
 
                 {!isLoaded ? (
-                    <p className="text-sm text-slate-500">Loading activities...</p>
+                    <p className="text-sm text-muted">Loading activities...</p>
                 ) : tripActivities.length === 0 ? (
-                    <p className="rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-400">
+                    <p className="rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-muted">
                         No activities yet. Add your first idea!
                     </p>
                 ) : (
@@ -86,9 +86,9 @@ export function ActivitiesPanel({
                             <ActivityCard key={activity.id} activity={activity}>
 
                                 {schedulingId === activity.id ? (
-                                    <div className="mt-4 space-y-3 border-t border-slate-200 pt-4">
+                                    <div className="mt-4 space-y-3 border-t border-border pt-4">
                                         <div>
-                                            <label className="mb-1 block text-xs text-slate-600">
+                                            <label className="mb-1 block text-xs text-muted">
                                                 Select day
                                             </label>
 
@@ -108,7 +108,7 @@ export function ActivitiesPanel({
                                         </div>
 
                                         <div>
-                                            <label className="mb-1 block text-xs text-slate-600">
+                                            <label className="mb-1 block text-xs text-muted">
                                                 Time of day
                                             </label>
 
@@ -129,7 +129,7 @@ export function ActivitiesPanel({
                                             <button
                                                 type="button"
                                                 onClick={() => handleSchedule(activity.id)}
-                                                className="rounded-lg bg-slate-900 px-3 py-2 text-sm text-white"
+                                                className="rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground"
                                             >
                                                 Save
                                             </button>
@@ -137,7 +137,7 @@ export function ActivitiesPanel({
                                             <button
                                                 type="button"
                                                 onClick={() => setSchedulingId(null)}
-                                                className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-700"
+                                                className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-foreground-secondary"
                                             >
                                                 Cancel
                                             </button>
@@ -151,7 +151,7 @@ export function ActivitiesPanel({
                                             setSelectedBlock("morning");
                                             setSchedulingId(activity.id);
                                         }}
-                                        className="mt-3 text-sm font-medium text-blue-600 hover:underline"
+                                        className="mt-3 text-sm font-medium text-primary hover:underline"
                                     >
                                         + Schedule
                                     </button>

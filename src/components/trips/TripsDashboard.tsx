@@ -6,6 +6,7 @@ import { TripCard } from "./TripCard";
 import { CreateTripForm } from "./CreateTripForm";
 import type { Trip } from "@/types/trip";
 import { ImportTripButton } from "./ImportTripButton";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function TripsDashboard() {
   const { trips, addTrip, isLoaded } = useTrips();
@@ -17,22 +18,23 @@ export function TripsDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-12">
+    <main className="min-h-screen bg-background px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <header className="mb-10 flex items-center justify-between">
           <div>
-            <p className="mb-2 text-sm text-slate-500">Your travel workspace</p>
+            <p className="mb-2 text-sm text-muted">Your travel workspace</p>
 
-            <h1 className="text-4xl font-bold text-slate-900">My Trips</h1>
+            <h1 className="text-4xl font-bold text-foreground">My Trips</h1>
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <ImportTripButton />
 
             <button
               type="button"
               onClick={() => setIsCreating(true)}
-              className="rounded-xl bg-slate-900 px-5 py-3 font-medium text-white"
+              className="rounded-xl bg-primary px-5 py-3 font-medium text-primary-foreground"
             >
               + New Trip
             </button>
@@ -49,13 +51,13 @@ export function TripsDashboard() {
         )}
 
         {!isLoaded ? (
-          <p className="text-slate-500">Loading trips...</p>
+          <p className="text-muted">Loading trips...</p>
         ) : trips.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center">
-            <h2 className="text-xl font-semibold text-slate-900">
+          <div className="rounded-2xl border border-dashed border-slate-300 bg-surface p-12 text-center">
+            <h2 className="text-xl font-semibold text-foreground">
               No trips yet
             </h2>
-            <p className="mt-2 text-slate-500">
+            <p className="mt-2 text-muted">
               Create your first trip to start planning.
             </p>
           </div>

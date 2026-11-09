@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
+/* Semantic colors for light mode */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f7f4;
+  --surface: #ffffff;
+  --surface-secondary: #f1f2ee;
+
+  --foreground: #242821;
+  --muted: #777770;
+  --border: #e8e7e2;
+
+  --primary: #386f65;
+  --primary-foreground: #ffffff;
+
+  --toast-action: #a9dfca;
+
+  color-scheme: light;
 }
 
+/* Semantic colors for dark mode */
+.dark {
+  --background: #161c1a;
+  --surface: #222a27;
+  --surface-secondary: #2c3631;
+
+  --foreground: #f1f3ef;
+  --muted: #a2ada7;
+  --border: #36413b;
+
+  --primary: #8fc5ad;
+  --primary-foreground: #14231d;
+
+  --toast-action: #043623;
+
+  color-scheme: dark;
+}
+
+/* Expose CSS variables as Tailwind utilities */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-toast-action: var(--toast-action);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Enable manual dark mode with .dark */
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

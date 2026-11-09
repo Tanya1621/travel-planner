@@ -24,7 +24,7 @@ export function TripDetails() {
     return (
       <main className="p-8">
         <h1 className="text-2xl font-bold">Trip not found</h1>
-        <Link href="/" className="text-blue-600">
+        <Link href="/" className="text-primary">
           Back to My Trips
         </Link>
       </main>
@@ -34,31 +34,31 @@ export function TripDetails() {
   const daysCount = getTripDays(trip.startDate, trip.endDate);
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-12">
+    <main className="min-h-screen bg-background px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <Link
           href="/"
-          className="mb-8 inline-block text-sm text-slate-500 hover:text-slate-900"
+          className="mb-8 inline-block text-sm text-muted hover:text-foreground"
         >
           ← Back to My Trips
         </Link>
 
         <header className="mb-10">
-          <h1 className="text-4xl font-bold text-slate-900">{trip.title}</h1>
+          <h1 className="text-4xl font-bold text-foreground">{trip.title}</h1>
           <button
             type="button"
             onClick={() => exportTrip(trip, activities)}
-            className="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="flex items-center gap-2 rounded-lg border border-slate-300 bg-surface px-4 py-2 text-sm font-medium text-foreground-secondary hover:bg-background"
           >
             <Download size={16} />
             Export JSON
           </button>
 
-          <p className="mt-2 text-slate-500">
+          <p className="mt-2 text-muted">
             {trip.destination} · {formatTripDates(trip.startDate, trip.endDate)}
           </p>
 
-          <p className="mt-1 text-sm text-slate-400">{daysCount} days</p>
+          <p className="mt-1 text-sm text-muted">{daysCount} days</p>
         </header>
 
         <TripPlanningBoard

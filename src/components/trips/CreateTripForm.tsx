@@ -41,19 +41,19 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+      className="space-y-5 rounded-2xl border border-border bg-surface p-6 shadow-sm"
     >
       <div>
-        <h2 className="text-2xl font-semibold text-slate-900">
+        <h2 className="text-2xl font-semibold text-foreground">
           Create a new trip
         </h2>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-muted">
           Start planning your next adventure.
         </p>
       </div>
 
       <div>
-        <label htmlFor="title" className="mb-1 block text-sm text-slate-700">
+        <label htmlFor="title" className="mb-1 block text-sm text-foreground-secondary">
           Trip name
         </label>
         <input
@@ -61,7 +61,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
           value={title}
           onChange={(event) => setTitle(event.target.value)}
           placeholder="Japan Adventure"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-foreground"
           required
         />
       </div>
@@ -69,7 +69,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
       <div>
         <label
           htmlFor="destination"
-          className="mb-1 block text-sm text-slate-700"
+          className="mb-1 block text-sm text-foreground-secondary"
         >
           Destination
         </label>
@@ -78,7 +78,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
           value={destination}
           onChange={(event) => setDestination(event.target.value)}
           placeholder="Japan"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-foreground"
           required
         />
       </div>
@@ -87,7 +87,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
         <div>
           <label
             htmlFor="startDate"
-            className="mb-1 block text-sm text-slate-700"
+            className="mb-1 block text-sm text-foreground-secondary"
           >
             Start date
           </label>
@@ -96,7 +96,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
             type="date"
             value={startDate}
             onChange={(event) => setStartDate(event.target.value)}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-foreground"
             required
           />
         </div>
@@ -104,7 +104,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
         <div>
           <label
             htmlFor="endDate"
-            className="mb-1 block text-sm text-slate-700"
+            className="mb-1 block text-sm text-foreground-secondary"
           >
             End date
           </label>
@@ -114,7 +114,7 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
             value={endDate}
             min={startDate || undefined}
             onChange={(event) => setEndDate(event.target.value)}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-foreground"
             required
           />
         </div>
@@ -124,14 +124,14 @@ export function CreateTripForm({ onCreate, onCancel }: CreateTripFormProps) {
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-lg border border-slate-300 px-4 py-2 text-slate-700"
+          className="rounded-lg border border-slate-300 px-4 py-2 text-foreground-secondary"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={!isValid}
-          className="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-lg bg-primary px-4 py-2 text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40"
         >
           Create Trip
         </button>

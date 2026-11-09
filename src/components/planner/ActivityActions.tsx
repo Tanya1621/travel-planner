@@ -19,7 +19,7 @@ export function ActivityActions({
         type="button"
         aria-label="Edit activity"
         title="Edit activity"
-        className="rounded-md p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
+        className="rounded-md p-1.5 text-muted transition-colors hover:bg-surface-secondary hover:text-foreground-secondary"
         onClick={() => {
           // Edit function 
         }}
@@ -31,7 +31,7 @@ export function ActivityActions({
         type="button"
         aria-label="Delete activity"
         title="Delete activity"
-        className="rounded-md p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+        className="rounded-md p-1.5 text-muted transition-colors hover:bg-red-50 hover:text-red-600"
         onClick={() => deleteActivity(activityId)}
       >
         <Trash2 size={15} />

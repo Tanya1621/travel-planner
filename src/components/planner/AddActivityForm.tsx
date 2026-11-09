@@ -40,12 +40,12 @@ export function AddActivityForm({ tripId, onCancel }: AddActivityFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 rounded-xl border border-slate-200 bg-white p-4"
+      className="space-y-4 rounded-xl border border-border bg-surface p-4"
     >
       <div>
         <label
           htmlFor="activity-title"
-          className="mb-1 block text-sm font-medium text-slate-700"
+          className="mb-1 block text-sm font-medium text-foreground-secondary"
         >
           Activity name
         </label>
@@ -55,14 +55,14 @@ export function AddActivityForm({ tripId, onCancel }: AddActivityFormProps) {
           onChange={(event) => setTitle(event.target.value)}
           placeholder="Visit the Colosseum"
           required
-          className="w-full rounded-lg border border-slate-300 p-2 text-slate-900"
+          className="w-full rounded-lg border border-slate-300 p-2 text-foreground"
         />
       </div>
 
       <div>
         <label
           htmlFor="activity-description"
-          className="mb-1 block text-sm font-medium text-slate-700"
+          className="mb-1 block text-sm font-medium text-foreground-secondary"
         >
           Description (optional)
         </label>
@@ -72,14 +72,14 @@ export function AddActivityForm({ tripId, onCancel }: AddActivityFormProps) {
           onChange={(event) => setDescription(event.target.value)}
           rows={3}
           placeholder="Notes about this place..."
-          className="w-full rounded-lg border border-slate-300 p-2 text-slate-900"
+          className="w-full rounded-lg border border-slate-300 p-2 text-foreground"
         />
       </div>
 
       <div>
         <label
           htmlFor="activity-url"
-          className="mb-1 block text-sm font-medium text-slate-700"
+          className="mb-1 block text-sm font-medium text-foreground-secondary"
         >
           Link (optional)
         </label>
@@ -89,7 +89,7 @@ export function AddActivityForm({ tripId, onCancel }: AddActivityFormProps) {
           value={url}
           onChange={(event) => setUrl(event.target.value)}
           placeholder="https://..."
-          className="w-full rounded-lg border border-slate-300 p-2 text-slate-900"
+          className="w-full rounded-lg border border-slate-300 p-2 text-foreground"
         />
       </div>
 
@@ -97,14 +97,14 @@ export function AddActivityForm({ tripId, onCancel }: AddActivityFormProps) {
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-lg border border-slate-300 px-4 py-2 text-slate-700"
+          className="rounded-lg border border-slate-300 px-4 py-2 text-foreground-secondary"
         >
           Cancel
         </button>
 
         <button
           type="submit"
-          className="rounded-lg bg-slate-900 px-4 py-2 text-white"
+          className="rounded-lg bg-primary px-4 py-2 text-primary-foreground"
         >
           Add Activity
         </button>

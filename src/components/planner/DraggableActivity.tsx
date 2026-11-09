@@ -25,7 +25,7 @@ export function DraggableActivity({ id, children }: DraggableActivityProps) {
           ref={handleRef}
           type="button"
           aria-label="Drag activity"
-          className="mt-0.5 shrink-0 cursor-grab rounded p-1 text-slate-400 hover:bg-slate-100 active:cursor-grabbing"
+          className="mt-0.5 shrink-0 cursor-grab rounded p-1 text-muted hover:bg-surface-secondary active:cursor-grabbing"
         >
           <GripVertical size={18} />
         </button>

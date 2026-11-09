@@ -13,7 +13,7 @@ export function UndoToast() {
     return (
         <div
             role="status"
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-4 rounded-xl bg-slate-900 px-5 py-4 text-white shadow-lg"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-4 rounded-xl bg-primary px-5 py-4 text-primary-foreground shadow-lg"
         >
             <span className="text-sm">
                 Activity deleted
@@ -22,7 +22,7 @@ export function UndoToast() {
             <button
                 type="button"
                 onClick={undoDelete}
-                className="flex items-center gap-1 text-sm font-semibold text-blue-300 hover:text-blue-200"
+                className="flex items-center gap-1 text-sm font-semibold text-toast-action hover:opacity-80"
             >
                 <RotateCcw size={15} />
                 Undo

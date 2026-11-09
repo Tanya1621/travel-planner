@@ -64,7 +64,7 @@ export function ImportTripButton() {
                 type="button"
                 disabled={!tripsLoaded || !activitiesLoaded || isImporting}
                 onClick={() => inputRef.current?.click()}
-                className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+                className="flex items-center gap-2 rounded-xl border border-slate-300 bg-surface px-4 py-3 text-sm font-medium text-foreground-secondary hover:bg-background disabled:opacity-50"
             >
                 <Upload size={16} />
                 {isImporting ? "Importing..." : "Import JSON"}

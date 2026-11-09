@@ -32,8 +32,8 @@ export function DayPlanner({
     const selectedDay = days.find((day) => day.date === selectedDate);
 
     return (
-        <section className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h2 className="mb-6 text-2xl font-semibold text-slate-900">
+        <section className="rounded-2xl border border-border bg-surface p-6">
+            <h2 className="mb-6 text-2xl font-semibold text-foreground">
                 Your itinerary
             </h2>
 
@@ -43,8 +43,8 @@ export function DayPlanner({
                         key={day.date}
                         onClick={() => onDateChange(day.date)}
                         className={`min-w-24 rounded-xl border p-3 text-center transition-colors ${selectedDate === day.date
-                            ? "border-slate-900 bg-slate-900 text-white"
-                            : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                            ? "border-slate-900 bg-primary text-primary-foreground"
+                            : "border-border bg-surface text-foreground-secondary hover:bg-background"
                             }`}
                     >
                         <span className="block text-xs opacity-70">
@@ -57,7 +57,7 @@ export function DayPlanner({
 
             {selectedDay && (
                 <div>
-                    <h3 className="mb-5 text-xl font-semibold text-slate-900">
+                    <h3 className="mb-5 text-xl font-semibold text-foreground">
                         Day {selectedDay.dayNumber} · {selectedDay.label}
                     </h3>
 
@@ -65,13 +65,13 @@ export function DayPlanner({
                         {timeBlocks.map((block) => (
                             <div
                                 key={block.id}
-                                className="rounded-xl border border-slate-200 bg-slate-50 p-5"
+                                className="rounded-xl border border-border bg-background p-5"
                             >
                                 <div className="mb-3 flex items-center justify-between">
-                                    <h4 className="font-semibold text-slate-900">
+                                    <h4 className="font-semibold text-foreground">
                                         {block.label}
                                     </h4>
-                                    <span className="text-sm text-slate-400">{block.time}</span>
+                                    <span className="text-sm text-muted">{block.time}</span>
                                 </div>
 
                                 <DropZone id={`slot:${block.id}`}>
@@ -94,7 +94,7 @@ export function DayPlanner({
                                                                 timeBlock: null,
                                                             })
                                                         }
-                                                        className="mt-3 text-sm text-slate-500 hover:text-slate-900"
+                                                        className="mt-3 text-sm text-muted hover:text-foreground"
                                                     >
                                                         Unschedule
                                                     </button>
@@ -107,7 +107,7 @@ export function DayPlanner({
                                                 activity.date === selectedDate &&
                                                 activity.timeBlock === block.id,
                                         ) && (
-                                                <p className="text-sm text-slate-400">
+                                                <p className="text-sm text-muted">
                                                     No activities yet
                                                 </p>
                                             )}
